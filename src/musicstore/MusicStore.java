@@ -4,9 +4,12 @@
  */
 package musicstore;
 
+import entidade.Cd;
 import entidade.Login;
 import entidade.Tema;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,6 +20,7 @@ import java.util.Scanner;
 public class MusicStore {
 
     static ArrayList<Tema> arrayThemes = new ArrayList<>();
+    static ArrayList<Cd> arrayCd = new ArrayList<>();
 
     public static void acessSistem() {
         System.out.println("---------------------------------------------------------------------------------------------------------- ");
@@ -27,7 +31,7 @@ public class MusicStore {
         System.out.print("                       Escolhe a opção que deseja :");
     }
 
-    public static void menuLogin() {
+    public static void servicoDisponivel() {
         System.out.println("---------------------------«- Serviços Disponíveis -»-----------------------------------");
         System.out.println("");
         System.out.println(" 1 - Inserir Novos Temas ");
@@ -39,17 +43,26 @@ public class MusicStore {
         System.out.println(" 0 - Voltar ");
         System.out.println(" ");
         System.out.println("------------------------------------------------------------------------------------------");
-        System.out.print("                       Escolhe a opção que deseja :");
+        System.out.print(" Escolhe a opção que deseja :");
     }
 
     public static void menuArtigos() {
-        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("");
         System.out.println(" 1 - Inserir Artigos ");
         System.out.println(" 2 - Alterar Artigos ");
         System.out.println(" 3 - Apagar Artigos ");
         System.out.println(" 0 - Voltar ...");
         System.out.println("------------------------------------------------------------------------------------------");
-        System.out.print("                       Escolhe a opção que deseja :");
+        System.out.print(" Escolhe a opção que deseja :");
+    }
+
+    public static void menuTipoArtigos() {
+        System.out.println("                                     1 - CD'S  ");
+        System.out.println("                                     2 - DVD's ");
+        System.out.println("                                3 - Livros Discos de Vinil");
+        System.out.println("                                     0 - Voltar ...");
+        System.out.println("-------------------------------------------------------------------------------------------");
+        System.out.print(" Escolha O Artigo Que Deseja Inserir :");
     }
 
     public static void menuInterpretes() {
@@ -59,16 +72,16 @@ public class MusicStore {
         System.out.println(" 3 - Apagar Intérpretes ");
         System.out.println(" 0 - Voltar ...");
         System.out.println("------------------------------------------------------------------------------------------");
-        System.out.print("                       Escolhe a opção que deseja :");
+        System.out.print("Escolhe a opção que deseja :");
     }
 
-    public static boolean searchTheme(String tema, ArrayList<Tema> listauser) {
+    public static Tema searchTheme(String tema, ArrayList<Tema> listauser) {
         for (Tema auxproc : listauser) {
-            if (tema == auxproc.nome) {
-                return true;
+            if (tema.equals(auxproc.nome)) {
+                return auxproc;
             }
         }
-        return false;
+        return null;
     }
 
     public static void main(String[] args) {
@@ -91,11 +104,14 @@ public class MusicStore {
                     boolean loginVerific = acess.login(name, key);
                     if (loginVerific == true) {
                         do {
-                            menuLogin();
+                            servicoDisponivel();
                             op2 = leitura.nextInt();
                             switch (op2) {
+                                case 0:
+                                    System.out.println(" Voltar....");
+                                    break;
                                 case 1:
-                                    System.out.println(" --------------------------Inserir Novos Temas--------------------------------- ");
+                                    System.out.println(" -------------------------1-Inserir Novos Temas--------------------------------- ");
                                     int control = 1;
                                     String nameTheme;
                                     int id;
@@ -103,9 +119,8 @@ public class MusicStore {
                                         System.out.print("Digite o nome do Tema:");
                                         leitura.nextLine();
                                         nameTheme = leitura.nextLine();
-                                        id = gerador.nextInt(1000) + 1;
                                         // criação de um objecto Tema
-                                        Tema theme = new Tema(id, nameTheme);
+                                        Tema theme = new Tema(nameTheme);
                                         //inserir o objecto num arraylist
                                         theme.inserirTemas(theme, arrayThemes);
                                         System.out.println("");
@@ -114,41 +129,68 @@ public class MusicStore {
                                     } while (control != 0);
                                     break;
                                 case 2:
-                                    System.out.println(" ----------------------------------Artigos---------------------------------------");
+                                    System.out.println(" ---------------------------------2-Artigos---------------------------------------");
                                     int opA;
+                                    String themeArtigo;
                                     do {
                                         menuArtigos();
                                         opA = leitura.nextInt();
                                         switch (opA) {
                                             case 1:
-                                                System.out.println(" 1 - Inserir Artigos ");
-                                                System.out.println("Digite o Tema para o Artigo");
-                                                String themeArtigo = leitura.next();
-                                                boolean teste = searchTheme(themeArtigo, arrayThemes);
-                                                if (teste == true) {
-                                                    int op4;
-                                                    do {
-                                                        System.out.println(" Artigos Como :");
-                                                        System.out.println(" 1 - CD'S  ");
-                                                        System.out.println(" 2 - DVD's ");
-                                                        System.out.println(" 3 - Livros Discos de Vinil");
-                                                        System.out.println(" Escolha O Artigo Que Deseja Inserir :");
-                                                        op4 = leitura.nextInt();
-                                                        switch (op4) {
-                                                            case 1:  
-                                                                break;
-                                                            case 2:
-                                                                break;
-                                                            case 3:
-                                                                break;
-                                                            default: System.out.println(" A Opção Escolhida Para O Tipo De Arigo É Inválida");
-                                                                break;
-                                                        }
-                                                    } while (op4 != 0);
-                                                } else {
-                                                    System.out.println("Esse Tema Não Está Registado...");
-                                                }
+                                                int op4;
+                                                do {
+                                                    menuTipoArtigos();
+                                                    op4 = leitura.nextInt();
+                                                    switch (op4) {
+                                                        case 1: System.out.println("                        Inserir CD'S            ");
+                                                            try {                                      
+                                                            System.out.println(" Digite o título do Cd :");
+                                                            String titleCd = leitura.next();
+                                                            System.out.println(" Digite o nome da Editora :");
+                                                            String nameEditora = leitura.next();
+                                                            System.out.println(" Digite o nome do Intreprete  :");
+                                                            String nameInterprete = leitura.next();
+                                                            ArrayList<String> interpreteCd = new ArrayList();
+                                                            interpreteCd.add(nameInterprete);
+                                                            System.out.println(" Digite o numero de Discos  :");
+                                                            int numDisco = leitura.nextInt();
+                                                            //
+                                                            leitura.nextLine();
+                                                            System.out.println(" Digite a Data  YYYY-MM-DD :");
+                                                            String dataString = leitura.nextLine();
+                                                            // Convertere a String em date 
+                                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                                            Date data = sdf.parse(dataString);
+                                                            System.out.println("Digite o tema para o CD");
+                                                            String themeCd = leitura.next();
+                                                            Tema aprov = searchTheme(themeCd, arrayThemes);
+                                                            if (aprov != null) {
 
+                                                                Cd cd = new Cd(interpreteCd, nameEditora, numDisco, data, titleCd, aprov);
+                                                                System.out.println(cd);
+                                                                arrayCd.add(cd);
+                                                            }else{
+                                                                System.out.println("O Tema Digitado Não Existe...");
+                                                                System.out.println("");
+                                                                System.out.println("---------------------------Temas Existentes -----------------------------");
+                                                                 aprov.impremirTemas(arrayThemes);
+                                                            }
+
+                                                        } catch (Exception e) {
+                                                            System.out.println("Erro ao processar a data " + e.getMessage());
+                                                        }
+                                                        break;
+                                                        case 2: 
+                                                           
+
+                                                            break;
+                                                        case 3:
+                                                            break;
+                                                        default:
+                                                            System.out.println(" A Opção Escolhida Para O Tipo De Artigo É Inválida");
+                                                            break;
+                                                    }
+                                                } while (op4 != 0);
                                                 break;
                                             case 2:
                                                 System.out.println(" 2 - Alterar Artigos ");
@@ -163,7 +205,7 @@ public class MusicStore {
                                     } while (opA != 0);
                                     break;
                                 case 3:
-                                    System.out.println("------------------------------ Intérpretes----------------------------------------- ");
+                                    System.out.println("-----------------------------3-Intérpretes----------------------------------------- ");
                                     int opI;
                                     do {
                                         menuArtigos();

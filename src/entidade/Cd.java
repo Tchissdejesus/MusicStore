@@ -17,13 +17,52 @@ public class Cd extends Artigo {
     protected int numeroDisco;
     protected Date dataLancamento;
 
-    public Cd(ArrayList<String> interpretes, String editora, int numeroDisco, Date dataLancamento, String titulo, entidade.Tema Tema) {
-        super(titulo, Tema);
+    public ArrayList<String> getInterpretes() {
+        return interpretes;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public int getNumeroDisco() {
+        return numeroDisco;
+    }
+
+    public Date getDataLancamento() {
+        return dataLancamento;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public Tema getTema() {
+        return tema;
+    }
+    
+
+    public Cd(ArrayList<String> interpretes, String editora, int numeroDisco, Date dataLancamento, String titulo, entidade.Tema tema) {
+        super(titulo, tema);
         this.interpretes = interpretes;
         this.editora = editora;
         this.numeroDisco = numeroDisco;
         this.dataLancamento = dataLancamento;
     }
+
+    @Override
+    public String toString() {
+        return "Cd{" + "interpretes=" + interpretes + ", editora=" + editora + ", numeroDisco=" + numeroDisco + ", dataLancamento=" + dataLancamento + '}';
+    }
+  
+
+
+
+    
+
+
+
+    
 
    
     

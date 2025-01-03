@@ -12,16 +12,7 @@ import java.util.ArrayList;
  */
 public class Tema {
 
-    public int id;
     public String nome;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -31,8 +22,7 @@ public class Tema {
         this.nome = nome;
     }
 
-    public Tema(int id, String nome) {
-        this.id = id;
+    public Tema(String nome) {
         this.nome = nome;
     }
 
@@ -49,7 +39,6 @@ public class Tema {
     public void impremirTemas(ArrayList<Tema> listauser) {
         for (Tema aux : listauser) {
             System.out.println("--------------------------------------------------");
-            System.out.println("id: " + aux.id);
             System.out.println(" Nome: " + aux.nome);
             System.out.println("--------------------------------------------------");
 

@@ -10,11 +10,14 @@ package entidade;
  */
 public class Artigo {
     protected String titulo;
-    protected Tema Tema;
+    protected Tema tema ;
  
     public Artigo(String titulo, Tema Tema) {
         this.titulo = titulo;
-        this.Tema = Tema;
+        this.tema = Tema;
+    }
+
+    public Artigo() {
     }
 
     public String getTitulo() {
@@ -26,11 +29,15 @@ public class Artigo {
     }
 
     public Tema getTema() {
-        return Tema;
+        return tema;
     }
 
     public void setTema(Tema Tema) {
-        this.Tema = Tema;
+        this.tema = Tema;
+    }
+    @Override
+    public String toString() {
+        return "Artigo{" + "titulo=" + titulo + ", Tema=" + tema + '}';
     }
     
     
