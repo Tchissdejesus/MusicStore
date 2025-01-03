@@ -9,6 +9,7 @@ package entidade;
  * @author tchis
  */
 public class Login {
+
     private String name;
     private String key;
 
@@ -32,11 +33,12 @@ public class Login {
         this.name = name;
         this.key = key;
     }
-     public boolean login(String name, String key) {
+
+    public boolean login(String name, String key) {
         if (name.equals("Tchissola") && key.equals("123")) {
             return true;
         }
         return false;
     }
-    
+
 }

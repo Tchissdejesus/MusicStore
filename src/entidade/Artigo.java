@@ -9,16 +9,12 @@ package entidade;
  * @author tchis
  */
 public class Artigo {
-    protected String titulo;
-    protected Tema tema ;
- 
-    public Artigo(String titulo, Tema Tema) {
-        this.titulo = titulo;
-        this.tema = Tema;
-    }
 
-    public Artigo() {
-    }
+    protected String titulo;
+    protected Tema tema;
+    protected int numArtigo;
+    protected double preco;
+    protected int artigovendido;
 
     public String getTitulo() {
         return titulo;
@@ -32,13 +28,40 @@ public class Artigo {
         return tema;
     }
 
-    public void setTema(Tema Tema) {
-        this.tema = Tema;
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
-    @Override
-    public String toString() {
-        return "Artigo{" + "titulo=" + titulo + ", Tema=" + tema + '}';
+
+    public int getNumArtigo() {
+        return numArtigo;
     }
-    
-    
+
+    public void setNumArtigo(int numArtigo) {
+        this.numArtigo = numArtigo;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public int getArtigovendido() {
+        return artigovendido;
+    }
+
+    public void setArtigovendido(int artigovendido) {
+        this.artigovendido = artigovendido;
+    }
+
+    public Artigo(String titulo, Tema tema, int quant, double preco) {
+        this.titulo = titulo;
+        this.tema = tema;
+        this.numArtigo = quant;
+        this.preco = preco;
+        this.artigovendido = 0;
+    }
+
 }

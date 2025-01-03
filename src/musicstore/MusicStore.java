@@ -126,7 +126,9 @@ public class MusicStore {
                                         System.out.println("");
                                         System.out.print("Inserir mais? sim(1)/não(0):");
                                         control = leitura.nextInt();
+
                                     } while (control != 0);
+
                                     break;
                                 case 2:
                                     System.out.println(" ---------------------------------2-Artigos---------------------------------------");
@@ -142,46 +144,44 @@ public class MusicStore {
                                                     menuTipoArtigos();
                                                     op4 = leitura.nextInt();
                                                     switch (op4) {
-                                                        case 1: System.out.println("                        Inserir CD'S            ");
-                                                            try {                                      
-                                                            System.out.println(" Digite o título do Cd :");
-                                                            String titleCd = leitura.next();
-                                                            System.out.println(" Digite o nome da Editora :");
-                                                            String nameEditora = leitura.next();
-                                                            System.out.println(" Digite o nome do Intreprete  :");
-                                                            String nameInterprete = leitura.next();
-                                                            ArrayList<String> interpreteCd = new ArrayList();
-                                                            interpreteCd.add(nameInterprete);
-                                                            System.out.println(" Digite o numero de Discos  :");
-                                                            int numDisco = leitura.nextInt();
-                                                            //
-                                                            leitura.nextLine();
-                                                            System.out.println(" Digite a Data  YYYY-MM-DD :");
-                                                            String dataString = leitura.nextLine();
-                                                            // Convertere a String em date 
-                                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                                                            Date data = sdf.parse(dataString);
-                                                            System.out.println("Digite o tema para o CD");
-                                                            String themeCd = leitura.next();
-                                                            Tema aprov = searchTheme(themeCd, arrayThemes);
-                                                            if (aprov != null) {
-
-                                                                Cd cd = new Cd(interpreteCd, nameEditora, numDisco, data, titleCd, aprov);
-                                                                System.out.println(cd);
-                                                                arrayCd.add(cd);
-                                                            }else{
-                                                                System.out.println("O Tema Digitado Não Existe...");
-                                                                System.out.println("");
-                                                                System.out.println("---------------------------Temas Existentes -----------------------------");
-                                                                 aprov.impremirTemas(arrayThemes);
+                                                        case 1:
+                                                            System.out.println("                        Inserir CD'S            ");
+                                                            try {
+                                                                System.out.println(" Digite o título do Cd :");
+                                                                String titleCd = leitura.next();
+                                                                System.out.println(" Digite o nome da Editora :");
+                                                                String nameEditora = leitura.next();
+                                                                System.out.println(" Digite o nome do Intreprete  :");
+                                                                String nameInterprete = leitura.next();
+                                                                ArrayList<String> interpreteCd = new ArrayList();
+                                                                interpreteCd.add(nameInterprete);
+                                                                System.out.println(" Digite o numero/quant de Discos  :");
+                                                                int numDisco = leitura.nextInt();
+                                                                //
+                                                                leitura.nextLine();
+                                                                System.out.println(" Digite a Data  YYYY-MM-DD :");
+                                                                String dataString = leitura.nextLine();
+                                                                // Convertere a String em date 
+                                                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                                                Date data = sdf.parse(dataString);
+                                                                System.out.println("Digite o tema para o CD");
+                                                                String themeCd = leitura.next();
+                                                                Tema aprov = searchTheme(themeCd, arrayThemes);
+                                                                if (aprov != null) {
+                                                                    System.out.println("Digite o preço de cada Cd :");
+                                                                    double preco = leitura.nextDouble();
+                                                                    Cd cd = new Cd(interpreteCd, nameEditora, data, titleCd, aprov, numDisco, preco);
+                                                                    System.out.println(cd);
+                                                                    arrayCd.add(cd);
+                                                                    System.out.println("CD Registado Com Sucesso...");
+                                                                } else {
+                                                                    System.out.println("O Tema Digitado Não Existe...");
+                                                                }
+                                                            } catch (Exception e) {
+                                                                System.out.println("Erro ao processar a data " + e.getMessage());
                                                             }
-
-                                                        } catch (Exception e) {
-                                                            System.out.println("Erro ao processar a data " + e.getMessage());
-                                                        }
-                                                        break;
-                                                        case 2: 
-                                                           
+                                                            break;
+                                                        case 2:
 
                                                             break;
                                                         case 3:

@@ -11,19 +11,20 @@ import java.util.Date;
  *
  * @author tchis
  */
-public class Livro extends Artigo {
+public class Livro  {
 
     protected ArrayList<String> autores;
     protected String coleccao;
     protected String editora;
     protected Date anoDeEdicao;
 
-    public Livro(ArrayList<String> autores, String coleccao, String editora, Date anoDeEdicao, String titulo, entidade.Tema Tema) {
+   /* public Livro(ArrayList<String> autores, String coleccao, String editora, Date anoDeEdicao, String titulo, entidade.Tema Tema) {
         super(titulo, Tema);
         this.autores = autores;
         this.coleccao = coleccao;
         this.editora = editora;
         this.anoDeEdicao = anoDeEdicao;
     }
+*/
 
 }

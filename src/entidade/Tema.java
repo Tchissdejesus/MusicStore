@@ -26,13 +26,26 @@ public class Tema {
         this.nome = nome;
     }
 
-    public Tema() {
+    // Metodo que verifica se o nome do Tema já existe no arraylist
+    public int existenciaTema(Tema aux, ArrayList<Tema> listauser) {
+        int cont = -1;
+        for (Tema tema : listauser) {
+            ++cont;
+            if (tema.getNome().equals(aux.getNome())) {
+                return cont;
+            }
+        }
+        return -1;
     }
 
-    // Metodo para inserir  um tema em um arraylist
+    // Metodo para inserir  um tema novo em um arraylist
     public void inserirTemas(Tema aux, ArrayList<Tema> listauser) {
-        listauser.add(aux);
-        System.out.print("Inserido com Sucesso \n");
+        if (existenciaTema(aux, listauser) == -1) {
+            listauser.add(aux);
+            System.out.print("Inserido com Sucesso \n");
+        } else {
+            System.out.println("Tema Já Existe...");
+        }
     }
 
     // Metodo para imprimir o arraylist de temas 

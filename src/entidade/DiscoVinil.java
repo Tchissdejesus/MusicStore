@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author tchis
  */
-public class DiscoVinil extends Artigo {
+public class DiscoVinil  {
 
     protected ArrayList<String> interpretes;
     protected String editora;
@@ -19,14 +19,6 @@ public class DiscoVinil extends Artigo {
     protected Date dataLançamento;
     protected TipoDiscoVinil tipo;
 
-    public DiscoVinil(ArrayList<String> interpretes, String editora, int numeroDisco, Date dataLançamento, TipoDiscoVinil tipo, String titulo, entidade.Tema Tema) {
-        super(titulo, Tema);
-        this.interpretes = interpretes;
-        this.editora = editora;
-        this.numeroDisco = numeroDisco;
-        this.dataLançamento = dataLançamento;
-        this.tipo = tipo;
-    }
 
 
     

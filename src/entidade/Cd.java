@@ -12,9 +12,9 @@ import java.util.Date;
  * @author tchis
  */
 public class Cd extends Artigo {
+
     protected ArrayList<String> interpretes;
-    protected String editora ;
-    protected int numeroDisco;
+    protected String editora;
     protected Date dataLancamento;
 
     public ArrayList<String> getInterpretes() {
@@ -23,10 +23,6 @@ public class Cd extends Artigo {
 
     public String getEditora() {
         return editora;
-    }
-
-    public int getNumeroDisco() {
-        return numeroDisco;
     }
 
     public Date getDataLancamento() {
@@ -40,31 +36,12 @@ public class Cd extends Artigo {
     public Tema getTema() {
         return tema;
     }
-    
 
-    public Cd(ArrayList<String> interpretes, String editora, int numeroDisco, Date dataLancamento, String titulo, entidade.Tema tema) {
-        super(titulo, tema);
+    public Cd(ArrayList<String> interpretes, String editora, Date dataLancamento, String titulo, Tema tema, int quant, double preco) {
+        super(titulo, tema, quant, preco);
         this.interpretes = interpretes;
         this.editora = editora;
-        this.numeroDisco = numeroDisco;
         this.dataLancamento = dataLancamento;
     }
 
-    @Override
-    public String toString() {
-        return "Cd{" + "interpretes=" + interpretes + ", editora=" + editora + ", numeroDisco=" + numeroDisco + ", dataLancamento=" + dataLancamento + '}';
-    }
-  
-
-
-
-    
-
-
-
-    
-
-   
-    
-    
 }
